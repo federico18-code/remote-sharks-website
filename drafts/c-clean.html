@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remote Sharks | Diving Deep for Top Remote Talent</title>
+<meta name="description" content="Remote Sharks connects US and global companies with elite remote talent from Latin America. Shortlist of 3 vetted candidates in 7 to 10 days.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F2C55;
+    --navy-deep:#16203F;
+    --cream:#F0EEE2;
+    --white:#FFFFFF;
+    --accent:#C93E15;
+    --accent-bright:#E8501F;
+    --accent-soft:#FBE9E1;
+    --ink:#1F2C55;
+    --ink-soft:#4A5578;
+    --line:rgba(31,44,85,.12);
+    --radius:18px;
+    --shadow-sm:0 1px 2px rgba(31,44,85,.06),0 4px 12px rgba(31,44,85,.06);
+    --shadow-lg:0 6px 16px rgba(31,44,85,.10),0 20px 48px rgba(31,44,85,.12);
+    --font-body:'Montserrat',sans-serif;
+    --font-display:'Bricolage Grotesque',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:96px}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    font-size:1rem;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:var(--font-display);line-height:1.05;letter-spacing:-.015em}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+    font-family:var(--font-body);font-weight:700;font-size:1rem;
+    padding:.95rem 1.9rem;border-radius:999px;text-decoration:none;
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease;
+    cursor:pointer;border:2px solid transparent;white-space:nowrap;
+  }
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(201,62,21,.28)}
+  .btn-primary:hover{background:var(--accent-bright);transform:translateY(-2px);box-shadow:0 8px 22px rgba(201,62,21,.34)}
+  .btn-outline{border-color:var(--navy);color:var(--navy);background:transparent}
+  .btn-outline:hover{background:var(--navy);color:#fff;transform:translateY(-2px)}
+  .btn-ghost-light{border-color:rgba(255,255,255,.55);color:#fff;background:transparent}
+  .btn-ghost-light:hover{background:#fff;color:var(--navy);transform:translateY(-2px)}
+  .btn .arrow{transition:transform .18s ease}
+  .btn:hover .arrow{transform:translateX(3px)}
+  .btn:focus-visible,a:focus-visible{outline:3px solid var(--accent-bright);outline-offset:3px}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:90px}
+  .nav-logo img{height:76px;width:auto}
+  .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+  .nav-links a{
+    text-decoration:none;font-weight:600;font-size:.92rem;color:var(--ink-soft);
+    transition:color .15s ease;
+  }
+  .nav-links a:hover{color:var(--accent)}
+  .nav .btn{padding:.68rem 1.4rem;font-size:.92rem}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:.5rem}
+  .nav-toggle span{display:block;width:24px;height:2.5px;background:var(--navy);margin:5px 0;border-radius:2px;transition:transform .2s ease,opacity .2s ease}
+  @media (max-width:860px){
+    .nav-toggle{display:block}
+    .nav-links{
+      position:absolute;top:76px;left:0;right:0;
+      background:#fff;border-bottom:1px solid var(--line);
+      flex-direction:column;gap:0;padding:.5rem 0;
+      display:none;box-shadow:var(--shadow-lg);
+    }
+    .nav-links.open{display:flex}
+    .nav-links li{width:100%;text-align:center}
+    .nav-links a{display:block;padding:.9rem 1rem;font-size:1rem}
+    .nav-cta-desktop{display:none}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(1100px 520px at 85% -10%,rgba(240,238,226,.9),transparent 60%),
+      radial-gradient(700px 420px at -10% 110%,rgba(201,62,21,.06),transparent 60%),
+      var(--white);
+    padding:5.5rem 0 5rem;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(31,44,85,.10) 1px,transparent 1px);
+    background-size:26px 26px;
+    mask-image:radial-gradient(650px 420px at 82% 18%,black,transparent 70%);
+    -webkit-mask-image:radial-gradient(650px 420px at 82% 18%,black,transparent 70%);
+  }
+  .hero-inner{position:relative;z-index:1;max-width:820px}
+  .hero-kicker{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:1.4rem;
+  }
+  .hero-kicker::before{content:"";width:34px;height:2px;background:var(--accent)}
+  .hero h1{
+    font-size:clamp(2.6rem,6.2vw,4.5rem);font-weight:800;
+    margin-bottom:1.3rem;
+  }
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p.lede{
+    font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--ink-soft);
+    max-width:34em;margin-bottom:2.2rem;
+  }
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:2rem}
+  .hero-ctas .btn{font-size:1.05rem;padding:1.05rem 2.1rem}
+  .chips{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none}
+  .chip{
+    display:inline-flex;align-items:center;gap:.45rem;
+    background:var(--cream);border:1px solid rgba(31,44,85,.08);
+    border-radius:999px;padding:.42rem 1rem;
+    font-size:.82rem;font-weight:600;color:var(--navy);
+  }
+  .chip svg{flex:none}
+
+  /* ---------- Metrics ---------- */
+  .metrics{background:var(--navy);color:#fff;padding:3.2rem 0}
+  .metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+  .metric{
+    border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);
+    padding:1.5rem 1.4rem;background:rgba(255,255,255,.04);
+    transition:transform .18s ease,background .18s ease;
+  }
+  .metric:hover{transform:translateY(-3px);background:rgba(255,255,255,.08)}
+  .metric b{
+    display:block;font-family:var(--font-display);font-weight:800;
+    font-size:clamp(1.9rem,3vw,2.5rem);line-height:1;margin-bottom:.45rem;color:#fff;
+  }
+  .metric b span{color:var(--accent-bright)}
+  .metric small{font-size:.86rem;color:rgba(255,255,255,.75);font-weight:500;line-height:1.45;display:block}
+  @media (max-width:860px){.metrics-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:480px){.metrics-grid{grid-template-columns:1fr 1fr;gap:.7rem}.metric{padding:1.1rem 1rem}}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:5.5rem 0}
+  .section-cream{background:var(--cream)}
+  .eyebrow{
+    display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:.9rem;
+  }
+  .section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:1rem;max-width:16em}
+  .section-sub{color:var(--ink-soft);max-width:38em;font-size:1.05rem;margin-bottom:3rem}
+
+  /* ---------- Services cards ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:1.8rem 1.6rem;box-shadow:var(--shadow-sm);
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+  .card-icon{
+    width:46px;height:46px;border-radius:12px;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;
+  }
+  .card h3{font-size:1.22rem;font-weight:700;margin-bottom:.55rem}
+  .card p{font-size:.94rem;color:var(--ink-soft)}
+  @media (max-width:960px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.cards{grid-template-columns:1fr}}
+
+  /* ---------- Process timeline ---------- */
+  .process{margin-top:4.5rem}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;counter-reset:step}
+  .step{position:relative;padding-top:1.4rem}
+  .step::before{
+    content:"";position:absolute;top:5px;left:0;right:-1.2rem;height:2px;
+    background:repeating-linear-gradient(90deg,var(--navy) 0 10px,transparent 10px 18px);
+    opacity:.35;
+  }
+  .step:last-child::before{right:0}
+  .step::after{
+    content:"";position:absolute;top:0;left:0;width:12px;height:12px;border-radius:50%;
+    background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft);
+  }
+  .step-num{
+    font-family:var(--font-display);font-weight:800;font-size:.85rem;
+    color:var(--accent);letter-spacing:.1em;margin-bottom:.4rem;display:block;
+  }
+  .step h3{font-size:1.12rem;font-weight:700;margin-bottom:.5rem}
+  .step p{font-size:.92rem;color:var(--ink-soft)}
+  @media (max-width:860px){
+    .steps{grid-template-columns:1fr}
+    .step{padding-top:0;padding-left:2rem}
+    .step::before{top:6px;bottom:-1.6rem;left:5px;right:auto;width:2px;height:auto;
+      background:repeating-linear-gradient(180deg,var(--navy) 0 10px,transparent 10px 18px)}
+    .step:last-child::before{display:none}
+    .step::after{top:2px}
+  }
+
+  /* ---------- Pricing model ---------- */
+  .split{
+    margin-top:4.5rem;background:var(--navy);color:#fff;border-radius:26px;
+    padding:3rem clamp(1.5rem,4vw,3.5rem);
+    display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;
+    position:relative;overflow:hidden;
+  }
+  .split::after{
+    content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle,rgba(232,80,31,.28),transparent 68%);
+  }
+  .split h3{font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:800;margin-bottom:.9rem}
+  .split p{color:rgba(255,255,255,.82);font-size:1rem;max-width:32em}
+  .split .btn{margin-top:1.6rem}
+  .fee-cards{display:grid;gap:1rem;position:relative;z-index:1}
+  .fee{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+    border-radius:var(--radius);padding:1.3rem 1.4rem;display:flex;gap:1.1rem;align-items:center;
+  }
+  .fee b{
+    font-family:var(--font-display);font-size:1.9rem;font-weight:800;
+    color:var(--accent-bright);flex:none;line-height:1;
+  }
+  .fee div{font-size:.92rem;color:rgba(255,255,255,.85)}
+  .fee div strong{display:block;color:#fff;font-size:1rem;margin-bottom:.15rem}
+  @media (max-width:860px){.split{grid-template-columns:1fr}}
+
+  /* ---------- For Talent ---------- */
+  .talent-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+  .talent-list{list-style:none;display:grid;gap:1.1rem;margin-bottom:2rem}
+  .talent-list li{display:flex;gap:.9rem;align-items:flex-start;font-size:.98rem}
+  .talent-list li svg{flex:none;margin-top:.2rem}
+  .talent-list li b{color:var(--navy)}
+  .funnel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:1.9rem 1.7rem}
+  .funnel h3{font-size:1.15rem;font-weight:700;margin-bottom:1.2rem}
+  .funnel ol{list-style:none;counter-reset:fn;display:grid;gap:.95rem}
+  .funnel ol li{
+    counter-increment:fn;display:flex;gap:.9rem;align-items:center;
+    font-size:.94rem;font-weight:500;
+  }
+  .funnel ol li::before{
+    content:counter(fn);flex:none;width:30px;height:30px;border-radius:50%;
+    background:var(--cream);color:var(--navy);font-family:var(--font-display);
+    font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(31,44,85,.12);
+  }
+  .funnel-note{
+    margin-top:1.3rem;padding:.9rem 1rem;border-radius:12px;background:var(--accent-soft);
+    font-size:.88rem;color:var(--accent);font-weight:600;
+  }
+  @media (max-width:860px){.talent-grid{grid-template-columns:1fr}}
+
+  /* ---------- Founder ---------- */
+  .founder{
+    display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center;
+    background:#fff;border:1px solid var(--line);border-radius:26px;
+    box-shadow:var(--shadow-sm);padding:clamp(1.8rem,4vw,3rem);
+  }
+  .founder-mark{
+    width:150px;height:150px;border-radius:50%;flex:none;
+    background:var(--navy);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-weight:800;font-size:3.2rem;
+    box-shadow:inset 0 0 0 6px rgba(240,238,226,.18),0 12px 30px rgba(31,44,85,.22);
+  }
+  .founder h3{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:800;margin-bottom:.35rem}
+  .founder .role{font-size:.9rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+  .founder p{color:var(--ink-soft);max-width:44em;font-size:.98rem;margin-bottom:1.3rem}
+  .founder-links{display:flex;flex-wrap:wrap;gap:.7rem}
+  .founder-links a{
+    display:inline-flex;align-items:center;gap:.45rem;
+    text-decoration:none;font-weight:600;font-size:.88rem;color:var(--navy);
+    border:1.5px solid var(--line);border-radius:999px;padding:.5rem 1.1rem;
+    transition:border-color .15s ease,color .15s ease,transform .15s ease;
+  }
+  .founder-links a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  @media (max-width:700px){
+    .founder{grid-template-columns:1fr;text-align:center}
+    .founder-mark{margin:0 auto}
+    .founder-links{justify-content:center}
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:780px;margin:0 auto}
+  .faq details{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    margin-bottom:.9rem;overflow:hidden;transition:box-shadow .2s ease;
+  }
+  .faq details[open]{box-shadow:var(--shadow-sm)}
+  .faq summary{
+    cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+    padding:1.25rem 1.5rem;font-weight:700;font-size:1.02rem;color:var(--navy);
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{
+    content:"+";font-family:var(--font-display);font-size:1.5rem;font-weight:700;
+    color:var(--accent);flex:none;transition:transform .2s ease;line-height:1;
+  }
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq details p{padding:0 1.5rem 1.4rem;color:var(--ink-soft);font-size:.95rem;max-width:56em}
+
+  /* ---------- Final CTA ---------- */
+  .cta-band{
+    background:linear-gradient(135deg,var(--navy-deep),var(--navy) 55%,#2A3A6E);
+    color:#fff;text-align:center;position:relative;overflow:hidden;
+  }
+  .cta-band::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1px);
+    background-size:24px 24px;
+    mask-image:radial-gradient(600px 320px at 50% 0%,black,transparent 75%);
+    -webkit-mask-image:radial-gradient(600px 320px at 50% 0%,black,transparent 75%);
+  }
+  .cta-band .wrap{position:relative;z-index:1}
+  .cta-band h2{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;margin-bottom:1rem}
+  .cta-band p{color:rgba(255,255,255,.8);max-width:36em;margin:0 auto 2.2rem;font-size:1.08rem}
+  .cta-band .hero-ctas{justify-content:center;margin-bottom:0}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy-deep);color:rgba(255,255,255,.72);padding:3.5rem 0 2.5rem;font-size:.9rem}
+  .footer-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;align-items:flex-start;margin-bottom:2.5rem}
+  .footer-brand img{height:64px;margin-bottom:1rem}
+  .footer-brand p{max-width:24em}
+  .footer-contact{display:grid;gap:.55rem}
+  .footer-contact a{color:rgba(255,255,255,.85);text-decoration:none;transition:color .15s ease}
+  .footer-contact a:hover{color:var(--accent-bright)}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.12);padding-top:1.6rem;
+    display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-size:.82rem;
+    color:rgba(255,255,255,.5);
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  .reveal-d1{transition-delay:.08s}
+  .reveal-d2{transition-delay:.16s}
+  .reveal-d3{transition-delay:.24s}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .btn,.card,.metric{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-logo" href="#top" aria-label="Remote Sharks home">
+      <img src="../assets/logo-navy-web.png" alt="Remote Sharks" width="74" height="76">
+    </a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#companies">For Companies</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#talent">For Talent</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li class="nav-cta-mobile"><a href="#book" data-todo="calendly">Book a Call</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary nav-cta-desktop" href="#book" data-todo="calendly">Book a Call</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-inner">
+        <span class="hero-kicker reveal in">Diving Deep for Top Remote Talent</span>
+        <h1 id="hero-title" class="reveal in">Hire elite remote talent from Latin America, <em>without the guesswork.</em></h1>
+        <p class="lede reveal in reveal-d1">Remote Sharks runs your entire search: sourcing, screening, and founder-led interviews. You get a shortlist of 3 vetted candidates in 7 to 10 days, ready to work your hours.</p>
+        <div class="hero-ctas reveal in reveal-d2">
+          <a class="btn btn-primary" href="#companies">I'm hiring <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-outline" href="#talent">I'm looking for work</a>
+        </div>
+        <ul class="chips reveal in reveal-d3" aria-label="Trust highlights">
+          <li class="chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 16.9 5.9 20.4l1.5-6.8L2.2 9l6.9-.7L12 2z" fill="#C93E15"/></svg>
+            Top 2% recruiter on Upwork
+          </li>
+          <li class="chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#C93E15" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="#C93E15" stroke-width="2" stroke-linecap="round"/></svg>
+            Shortlist in 7 to 10 days
+          </li>
+          <li class="chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Pay the balance only when you hire
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= METRICS ================= -->
+  <section class="metrics" aria-label="Key numbers">
+    <div class="wrap">
+      <div class="metrics-grid">
+        <div class="metric reveal"><b>Top <span>2%</span></b><small>of recruiters on Upwork, Top Rated Plus with a perfect client success score</small></div>
+        <div class="metric reveal reveal-d1"><b>7<span>-</span>10</b><small>days from kickoff to a shortlist of vetted finalists on your calendar</small></div>
+        <div class="metric reveal reveal-d2"><b><span>3</span></b><small>hand-picked candidates per search, every one screened on video and interviewed by the founder</small></div>
+        <div class="metric reveal reveal-d3"><b>US <span>hours</span></b><small>LATAM talent that overlaps your workday, with strong English and senior experience</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOR COMPANIES ================= -->
+  <section id="companies" aria-labelledby="companies-title">
+    <div class="wrap">
+      <span class="eyebrow reveal">For Companies</span>
+      <h2 id="companies-title" class="section-title reveal">The roles we fill, filled right.</h2>
+      <p class="section-sub reveal reveal-d1">We specialize in remote roles where Latin America consistently outperforms: same time zones as your team, excellent English, and senior talent at rates that make sense.</p>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6" stroke="#C93E15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Developers, AI-first</h3>
+          <p>Engineers who ship with modern AI tooling built into their workflow, not bolted on. Full-stack, backend, and automation specialists who move at startup speed.</p>
+        </article>
+        <article class="card reveal reveal-d1">
+          <div class="card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 20c0-3.3 3.6-5 8-5s8 1.7 8 5" stroke="#C93E15" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3>Virtual Assistants</h3>
+          <p>Reliable, proactive operators who take inboxes, calendars, and back-office work off your plate so you can stay focused on the business.</p>
+        </article>
+        <article class="card reveal reveal-d2">
+          <div class="card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8M15 7h6v6" stroke="#C93E15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Sales &amp; SDRs</h3>
+          <p>Bilingual closers and pipeline builders who work your prospects in their time zone, with native-level English on every call.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6" stroke="#C93E15" stroke-width="2"/><path d="M20 20l-4.5-4.5" stroke="#C93E15" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3>Recruiters</h3>
+          <p>Sourcers and full-cycle recruiters trained the way we work: fast, structured, and obsessive about candidate quality.</p>
+        </article>
+        <article class="card reveal reveal-d1">
+          <div class="card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="#C93E15" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="#C93E15" stroke-width="2"/></svg></div>
+          <h3>Operations</h3>
+          <p>Project managers and ops generalists who build the systems, dashboards, and processes that keep a remote company running.</p>
+        </article>
+        <article class="card reveal reveal-d2">
+          <div class="card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c5-4.5 8-8 8-11.5A8 8 0 004 9.5C4 13 7 16.5 12 21z" stroke="#C93E15" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="#C93E15" stroke-width="2"/></svg></div>
+          <h3>Something else?</h3>
+          <p>If the role is remote and the bar is high, we can probably fill it. Tell us what you need on a 20-minute call and we will give you a straight answer.</p>
+        </article>
+      </div>
+
+      <!-- Process timeline -->
+      <div class="process" id="process">
+        <span class="eyebrow reveal">How it works</span>
+        <h2 class="section-title reveal">Kickoff to shortlist in four steps.</h2>
+        <p class="section-sub reveal reveal-d1">No black box. You know exactly where your search stands at every stage.</p>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-num">STEP 01</span>
+            <h3>Role deep-dive</h3>
+            <p>We start with a working session on the role: outcomes, must-haves, deal-breakers, budget, and what "great" looks like on your team.</p>
+          </li>
+          <li class="step reveal reveal-d1">
+            <span class="step-num">STEP 02</span>
+            <h3>Targeted sourcing</h3>
+            <p>We hunt across LinkedIn Recruiter, Upwork, and local LATAM platforms, and run paid ads on all of them to widen the pool beyond who is actively looking.</p>
+          </li>
+          <li class="step reveal reveal-d2">
+            <span class="step-num">STEP 03</span>
+            <h3>Double vetting</h3>
+            <p>Every promising candidate passes a structured video screening, then a live interview with the founder. Only proven skills and real English make it through.</p>
+          </li>
+          <li class="step reveal reveal-d3">
+            <span class="step-num">STEP 04</span>
+            <h3>Your shortlist of 3</h3>
+            <p>Within 7 to 10 days of kickoff you meet three finalists, each with notes on strengths, rates, and availability. You interview, you choose, you hire.</p>
+          </li>
+        </ol>
+
+        <!-- Pricing model -->
+        <div class="split reveal" id="pricing">
+          <div>
+            <span class="eyebrow" style="color:var(--accent-bright)">Simple engagement</span>
+            <h3>Half to start. Half only when you hire.</h3>
+            <p>No retainers, no subscriptions, no surprises. You pay 50% of the fee to kick off the search and the remaining 50% only when you make a hire. Our incentive is exactly yours: the right person in the seat, fast.</p>
+            <a class="btn btn-primary" href="#book" data-todo="calendly">Book a Call <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <div class="fee-cards">
+            <div class="fee"><b>50%</b><div><strong>At kickoff</strong>Starts the search: role deep-dive, sourcing, ads, and vetting begin the same week.</div></div>
+            <div class="fee"><b>50%</b><div><strong>When you hire</strong>Due only when you sign your chosen candidate. No hire from the shortlist, we keep searching.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOR TALENT ================= -->
+  <section id="talent" class="section-cream" aria-labelledby="talent-title">
+    <div class="wrap">
+      <span class="eyebrow reveal">For Talent</span>
+      <h2 id="talent-title" class="section-title reveal">Real remote roles. Real feedback. Every time.</h2>
+      <p class="section-sub reveal reveal-d1">If you are a senior professional in Latin America or anywhere in the world, we want to know you before the perfect role opens up.</p>
+
+      <div class="talent-grid">
+        <div class="reveal">
+          <ul class="talent-list">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><b>Vetted companies only.</b> Every role we share is real, funded, and remote. We interview the client before we ever interview you.</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><b>You always hear back.</b> Ghosting is the norm in recruiting. Not here. You get honest feedback at every stage of the process, whether you advance or not.</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><b>A recruiter in your corner.</b> We coach you on the client, the role, and the interview so you walk in prepared, not guessing.</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><b>Free for candidates.</b> Companies pay our fee. You never do.</span>
+            </li>
+          </ul>
+          <a class="btn btn-outline" href="mailto:federico@remote-sharks.com?subject=Candidate%20application">Send us your profile <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        </div>
+        <div class="funnel reveal reveal-d1">
+          <h3>What the process looks like</h3>
+          <ol>
+            <li>You apply or we reach out about a specific role</li>
+            <li>Short video screening: skills, English, availability</li>
+            <li>Live interview with Federico, the founder</li>
+            <li>You make the shortlist of 3 sent to the client</li>
+            <li>You meet the company and negotiate directly</li>
+          </ol>
+          <p class="funnel-note">Feedback at every stage. If it is a no, you will know why, and quickly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOUNDER ================= -->
+  <section aria-labelledby="founder-title">
+    <div class="wrap">
+      <div class="founder reveal">
+        <div class="founder-mark" aria-hidden="true">FV</div>
+        <div>
+          <h3 id="founder-title">Federico Varela</h3>
+          <div class="role">Founder, Remote Sharks</div>
+          <p>Federico is in the top 2% of recruiters on Upwork, Top Rated Plus with a 100% job success score. He has spent years placing remote talent for US startups and agencies, and he personally interviews every candidate that reaches your shortlist. When you work with Remote Sharks, the founder runs your search, not a junior account manager.</p>
+          <div class="founder-links">
+            <a href="#" data-todo="upwork-profile-url">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 16.9 5.9 20.4l1.5-6.8L2.2 9l6.9-.7L12 2z" fill="currentColor"/></svg>
+              Upwork profile
+            </a>
+            <a href="#" data-todo="linkedin-url">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21h-4V9z"/></svg>
+              LinkedIn
+            </a>
+            <a href="mailto:federico@remote-sharks.com">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              federico@remote-sharks.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq" class="section-cream" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div style="text-align:center">
+        <span class="eyebrow reveal">FAQ</span>
+        <h2 id="faq-title" class="section-title reveal" style="margin-left:auto;margin-right:auto">Questions buyers actually ask.</h2>
+        <p class="section-sub reveal reveal-d1" style="margin-left:auto;margin-right:auto">Short, honest answers. Anything else, bring it to the call.</p>
+      </div>
+      <div class="faq">
+        <details class="reveal">
+          <summary>How fast will I see candidates?</summary>
+          <p>You will have a shortlist of 3 vetted finalists within 7 to 10 days of kickoff. The clock starts after the role deep-dive, so the better we define the role together, the faster the search moves.</p>
+        </details>
+        <details class="reveal reveal-d1">
+          <summary>Why hire from Latin America?</summary>
+          <p>Three reasons: your time zone, not a 12-hour offset; strong English across senior professionals; and rates that let you hire genuinely experienced people without stretching the budget. You get real-time collaboration instead of overnight handoffs.</p>
+        </details>
+        <details class="reveal reveal-d2">
+          <summary>How does pricing work?</summary>
+          <p>Simple 50/50 split. Half of the fee starts the search, and the other half is due only when you hire someone from the shortlist. No retainers and no monthly subscriptions. We quote the fee up front on your kickoff call based on the role.</p>
+        </details>
+        <details class="reveal reveal-d3">
+          <summary>What if none of the finalists is a fit?</summary>
+          <p>Then we go back into the pool and keep searching. The second half of the fee is only ever due when you actually hire, so an unfilled shortlist costs you nothing extra and costs us time. That keeps our vetting honest.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="cta-band" id="book" aria-labelledby="cta-title">
+    <div class="wrap">
+      <h2 id="cta-title" class="reveal">Ready to meet your next hire?</h2>
+      <p class="reveal reveal-d1">Bring the role. In 20 minutes we will tell you if we can fill it, how long it will take, and exactly what it costs. If we are not the right fit, we will say so.</p>
+      <div class="hero-ctas reveal reveal-d2">
+        <a class="btn btn-primary" href="#book" data-todo="calendly">Book a Call <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-ghost-light" href="https://wa.me/51937153488" target="_blank" rel="noopener">Message on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="../assets/logo-white-web.png" alt="Remote Sharks" width="62" height="64">
+        <p>Diving deep for top remote talent. Connecting ambitious companies with elite remote professionals across Latin America and beyond.</p>
+      </div>
+      <div class="footer-contact">
+        <strong style="color:#fff;font-size:.95rem">Get in touch</strong>
+        <a href="mailto:federico@remote-sharks.com">federico@remote-sharks.com</a>
+        <a href="tel:+51937153488">+51 937 153 488</a>
+        <a href="https://wa.me/51937153488" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="#" data-todo="linkedin-url">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Remote Sharks. All rights reserved.</span>
+      <span>Shortlist of 3 in 7 to 10 days. Pay the balance only when you hire.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  (function(){
+    var toggle=document.getElementById('navToggle');
+    var links=document.getElementById('navLinks');
+    toggle.addEventListener('click',function(){
+      var open=links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded',open?'true':'false');
+      toggle.setAttribute('aria-label',open?'Close menu':'Open menu');
+    });
+    links.addEventListener('click',function(e){
+      if(e.target.tagName==='A'){
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+  })();
+
+  // Scroll reveal
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      els.forEach(function(el){el.classList.add('in');});
+      return;
+    }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){io.observe(el);});
+  })();
+</script>
+</body>
+</html>
