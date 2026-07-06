@@ -74,6 +74,7 @@
     transition:color .15s ease;
   }
   .nav-links a:hover{color:var(--accent)}
+  .nav-links a.active{color:var(--accent);font-weight:700}
   .nav .btn{padding:.68rem 1.4rem;font-size:.92rem}
   .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:.5rem}
   .nav-toggle span{display:block;width:24px;height:2.5px;background:var(--navy);margin:5px 0;border-radius:2px;transition:transform .2s ease,opacity .2s ease}
@@ -290,6 +291,37 @@
     .founder-links{justify-content:center}
   }
 
+  /* ---------- Team ---------- */
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:1rem}
+  .tm{
+    background:#fff;border:1px solid var(--line);border-radius:26px;
+    box-shadow:var(--shadow-sm);padding:2.2rem 1.6rem 2rem;text-align:center;
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .tm:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+  .tm.featured{border-color:rgba(201,62,21,.32);box-shadow:var(--shadow-lg)}
+  .tm-photo{
+    width:150px;height:150px;border-radius:50%;margin:0 auto 1.3rem;
+    position:relative;overflow:hidden;background:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:inset 0 0 0 5px rgba(240,238,226,.18),0 12px 30px rgba(31,44,85,.20);
+  }
+  .tm-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+  .tm-photo span{font-family:var(--font-display);font-weight:800;font-size:2.7rem;color:var(--cream)}
+  .tm-photo img+span{display:none}
+  .tm h3{font-size:1.3rem;font-weight:800;margin-bottom:.3rem}
+  .tm .role{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.1rem}
+  .tm-bio{font-size:.92rem;color:var(--ink-soft);max-width:26em;margin:0 auto 1.2rem}
+  .tm-links{display:flex;justify-content:center;flex-wrap:wrap;gap:.55rem}
+  .tm-links a{
+    display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;
+    font-weight:600;font-size:.84rem;color:var(--navy);
+    border:1.5px solid var(--line);border-radius:999px;padding:.45rem 1rem;
+    transition:border-color .15s ease,color .15s ease,transform .15s ease;
+  }
+  .tm-links a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  @media (max-width:860px){.team-grid{grid-template-columns:1fr;max-width:420px;margin:1rem auto 0}}
+
   /* ---------- FAQ ---------- */
   .faq{max-width:780px;margin:0 auto}
   .faq details{
@@ -366,6 +398,7 @@
         <li><a href="#companies">For Companies</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#talent">For Talent</a></li>
+        <li><a href="#team">Team</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li class="nav-cta-mobile"><a href="#book" data-todo="calendly">Book a Call</a></li>
       </ul>
@@ -383,27 +416,13 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
       <div class="hero-inner">
-        <span class="hero-kicker reveal in">Diving Deep for Top Remote Talent</span>
+        <span class="hero-kicker reveal in">Boutique remote recruiting</span>
         <h1 id="hero-title" class="reveal in">Hire elite remote talent from Latin America, <em>without the guesswork.</em></h1>
         <p class="lede reveal in reveal-d1">Remote Sharks runs your entire search: sourcing, screening, and founder-led interviews. You get a shortlist of 3 vetted candidates in 7 to 10 days, ready to work your hours.</p>
         <div class="hero-ctas reveal in reveal-d2">
           <a class="btn btn-primary" href="#companies">I'm hiring <span class="arrow" aria-hidden="true">&rarr;</span></a>
           <a class="btn btn-outline" href="#talent">I'm looking for work</a>
         </div>
-        <ul class="chips reveal in reveal-d3" aria-label="Trust highlights">
-          <li class="chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 16.9 5.9 20.4l1.5-6.8L2.2 9l6.9-.7L12 2z" fill="#C93E15"/></svg>
-            Top 2% recruiter on Upwork
-          </li>
-          <li class="chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#C93E15" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="#C93E15" stroke-width="2" stroke-linecap="round"/></svg>
-            Shortlist in 7 to 10 days
-          </li>
-          <li class="chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Pay the balance only when you hire
-          </li>
-        </ul>
       </div>
     </div>
   </section>
@@ -412,7 +431,7 @@
   <section class="metrics" aria-label="Key numbers">
     <div class="wrap">
       <div class="metrics-grid">
-        <div class="metric reveal"><b>Top <span>2%</span></b><small>of recruiters on Upwork, Top Rated Plus with a perfect client success score</small></div>
+        <div class="metric reveal"><b>Top <span>2%</span></b><small>of recruiters on Upwork, Top Rated Plus with a 100% job success score</small></div>
         <div class="metric reveal reveal-d1"><b>7<span>-</span>10</b><small>days from kickoff to a shortlist of vetted finalists on your calendar</small></div>
         <div class="metric reveal reveal-d2"><b><span>3</span></b><small>hand-picked candidates per search, every one screened on video and interviewed by the founder</small></div>
         <div class="metric reveal reveal-d3"><b>US <span>hours</span></b><small>LATAM talent that overlaps your workday, with strong English and senior experience</small></div>
@@ -456,7 +475,7 @@
         <article class="card reveal reveal-d2">
           <div class="card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c5-4.5 8-8 8-11.5A8 8 0 004 9.5C4 13 7 16.5 12 21z" stroke="#C93E15" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="#C93E15" stroke-width="2"/></svg></div>
           <h3>Something else?</h3>
-          <p>If the role is remote and the bar is high, we can probably fill it. Tell us what you need on a 20-minute call and we will give you a straight answer.</p>
+          <p>If the role is remote and the bar is high, we can probably fill it. Tell us what you need and we will give you a straight answer.</p>
         </article>
       </div>
 
@@ -512,67 +531,67 @@
       <h2 id="talent-title" class="section-title reveal">Real remote roles. Real feedback. Every time.</h2>
       <p class="section-sub reveal reveal-d1">If you are a senior professional in Latin America or anywhere in the world, we want to know you before the perfect role opens up.</p>
 
-      <div class="talent-grid">
-        <div class="reveal">
-          <ul class="talent-list">
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span><b>Vetted companies only.</b> Every role we share is real, funded, and remote. We interview the client before we ever interview you.</span>
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span><b>You always hear back.</b> Ghosting is the norm in recruiting. Not here. You get honest feedback at every stage of the process, whether you advance or not.</span>
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span><b>A recruiter in your corner.</b> We coach you on the client, the role, and the interview so you walk in prepared, not guessing.</span>
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span><b>Free for candidates.</b> Companies pay our fee. You never do.</span>
-            </li>
-          </ul>
-          <a class="btn btn-outline" href="mailto:federico@remote-sharks.com?subject=Candidate%20application">Send us your profile <span class="arrow" aria-hidden="true">&rarr;</span></a>
-        </div>
-        <div class="funnel reveal reveal-d1">
-          <h3>What the process looks like</h3>
-          <ol>
-            <li>You apply or we reach out about a specific role</li>
-            <li>Short video screening: skills, English, availability</li>
-            <li>Live interview with Federico, the founder</li>
-            <li>You make the shortlist of 3 sent to the client</li>
-            <li>You meet the company and negotiate directly</li>
-          </ol>
-          <p class="funnel-note">Feedback at every stage. If it is a no, you will know why, and quickly.</p>
-        </div>
+      <div class="reveal" style="max-width:780px">
+        <ul class="talent-list">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><b>Vetted companies only.</b> Every role we share is real, funded, and remote. We interview the client before we ever interview you.</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><b>You always hear back.</b> Ghosting is the norm in recruiting, not here. You get honest feedback whether you advance or not, plus coaching before every interview.</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#C93E15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><b>Free for candidates.</b> Companies pay our fee. You never do.</span>
+          </li>
+        </ul>
+        <a class="btn btn-outline reveal reveal-d1" href="mailto:federico@remote-sharks.com?subject=Candidate%20application">Send us your profile <span class="arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ================= FOUNDER ================= -->
-  <section aria-labelledby="founder-title">
+  <!-- ================= TEAM ================= -->
+  <section id="team" aria-labelledby="team-title">
     <div class="wrap">
-      <div class="founder reveal">
-        <div class="founder-mark" aria-hidden="true">FV</div>
-        <div>
-          <h3 id="founder-title">Federico Varela</h3>
-          <div class="role">Founder, Remote Sharks</div>
-          <p>Federico is in the top 2% of recruiters on Upwork, Top Rated Plus with a 100% job success score. He has spent years placing remote talent for US startups and agencies, and he personally interviews every candidate that reaches your shortlist. When you work with Remote Sharks, the founder runs your search, not a junior account manager.</p>
-          <div class="founder-links">
+      <div style="text-align:center">
+        <span class="eyebrow reveal">Meet the Team</span>
+        <h2 id="team-title" class="section-title reveal" style="margin-left:auto;margin-right:auto">You need sharks to find sharks.</h2>
+        <p class="section-sub reveal reveal-d1" style="margin-left:auto;margin-right:auto">A small, senior team behind every search. The founder owns the client relationship and interviews every finalist personally, so you never get handed to a junior.</p>
+      </div>
+      <div class="team-grid">
+        <article class="tm reveal">
+          <div class="tm-photo"><img src="../assets/team-diana.jpg" alt="Diana Romero" onerror="this.remove()"><span>DR</span></div>
+          <h3>Diana Romero</h3>
+          <div class="role">Sourcing &amp; Screening</div>
+          <p class="tm-bio">Sources and screens across LATAM, running the first pass of vetting so only the strongest candidates reach the founder round.</p>
+        </article>
+        <article class="tm featured reveal reveal-d1">
+          <div class="tm-photo"><img src="../assets/team-fred.jpg" alt="Fred Varela" onerror="this.remove()"><span>FV</span></div>
+          <h3>Fred Varela</h3>
+          <div class="role">Client Manager (Founder)</div>
+          <p class="tm-bio">Top 2% of recruiters on Upwork, Top Rated Plus with a 100% job success score. Owns the client relationship and leads every search from kickoff to hire.</p>
+          <div class="tm-links">
             <a href="#" data-todo="upwork-profile-url">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 16.9 5.9 20.4l1.5-6.8L2.2 9l6.9-.7L12 2z" fill="currentColor"/></svg>
-              Upwork profile
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 16.9 5.9 20.4l1.5-6.8L2.2 9l6.9-.7L12 2z" fill="currentColor"/></svg>
+              Upwork
             </a>
             <a href="#" data-todo="linkedin-url">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21h-4V9z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21h-4V9z"/></svg>
               LinkedIn
             </a>
             <a href="mailto:federico@remote-sharks.com">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              federico@remote-sharks.com
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Email
             </a>
           </div>
-        </div>
+        </article>
+        <article class="tm reveal reveal-d2">
+          <div class="tm-photo"><img src="../assets/team-analucia.jpg" alt="Analuc&iacute;a D&aacute;vila" onerror="this.remove()"><span>AD</span></div>
+          <h3>Analuc&iacute;a D&aacute;vila</h3>
+          <div class="role">Sourcing &amp; Screening</div>
+          <p class="tm-bio">Sources and coordinates each search, keeping candidates coached and the pipeline moving so shortlists land on time.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -637,7 +656,7 @@
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Remote Sharks. All rights reserved.</span>
-      <span>Shortlist of 3 in 7 to 10 days. Pay the balance only when you hire.</span>
+      <span>Remote Sharks is a trade name of FreelancerHype LLC.</span>
     </div>
   </div>
 </footer>
@@ -676,6 +695,27 @@
       });
     },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
     els.forEach(function(el){io.observe(el);});
+  })();
+
+  // Scroll-spy: highlight the active section in the nav
+  (function(){
+    if(!('IntersectionObserver' in window))return;
+    var ids=['companies','process','talent','team','faq'];
+    var linkFor={};
+    ids.forEach(function(id){
+      var a=document.querySelector('.nav-links a[href="#'+id+'"]');
+      var sec=document.getElementById(id);
+      if(a&&sec)linkFor[id]=a;
+    });
+    var visible={};
+    var spy=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){visible[e.target.id]=e.isIntersecting;});
+      var current=ids.filter(function(id){return visible[id];})[0];
+      ids.forEach(function(id){
+        if(linkFor[id])linkFor[id].classList.toggle('active',id===current);
+      });
+    },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    ids.forEach(function(id){var sec=document.getElementById(id);if(sec)spy.observe(sec);});
   })();
 </script>
 </body>

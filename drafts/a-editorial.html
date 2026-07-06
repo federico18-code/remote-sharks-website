@@ -215,6 +215,18 @@
 
   .site-header .btn { padding: 0.75em 1.5em; }
 
+  .nav-anchor {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy-soft);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .nav-anchor:hover, .nav-anchor.active { color: var(--teal); }
+  @media (max-width: 860px) { .nav-anchor { display: none; } }
+
   .header-contact {
     display: none;
     font-family: var(--mono);
@@ -541,6 +553,52 @@
     margin-bottom: 0.75rem;
   }
 
+  /* ---------- team ---------- */
+  .team { background: var(--cream); }
+
+  .team-roster {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.75rem, 4vw, 3rem);
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .member { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+  .member-portrait {
+    position: relative;
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--navy);
+    border: 1px solid var(--navy-faint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .member-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .member-portrait span { font-family: var(--serif); font-size: 3rem; color: var(--cream); }
+  .member-portrait img + span { display: none; }
+
+  .member-name { font-family: var(--serif); font-size: 1.6rem; line-height: 1.1; margin-top: 1.1rem; }
+
+  .member-role {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-top: 0.5rem;
+  }
+
+  .member-bio { color: var(--navy-soft); font-size: 0.92rem; line-height: 1.5; margin-top: 0.85rem; max-width: 22em; }
+
+  @media (max-width: 760px) {
+    .team-roster { grid-template-columns: 1fr; max-width: 340px; margin-left: auto; margin-right: auto; }
+  }
+
   /* ---------- founder note ---------- */
   .founder {
     background: var(--navy);
@@ -691,9 +749,12 @@
     <img src="../assets/logo-navy-web.png" alt="Remote Sharks logo" width="59" height="60">
     <span>Remote Sharks</span>
   </a>
-  <nav aria-label="Primary" style="display:flex; align-items:center; gap:1.75rem;">
-    <a class="header-contact" href="mailto:federico@remote-sharks.com">federico@remote-sharks.com</a>
-    <a class="btn" href="#book" data-todo="calendly">Book a Call <span class="arrow" aria-hidden="true">&rarr;</span></a>
+  <nav aria-label="Primary" style="display:flex; align-items:center; gap:1.5rem;">
+    <a class="nav-anchor" href="#what-we-do">What We Do</a>
+    <a class="nav-anchor" href="#process">Process</a>
+    <a class="nav-anchor" href="#why-latam">Why LATAM</a>
+    <a class="nav-anchor" href="#team">Team</a>
+    <a class="btn" href="#contact" data-todo="calendly">Book a Call <span class="arrow" aria-hidden="true">&rarr;</span></a>
   </nav>
 </header>
 
@@ -711,7 +772,7 @@
         Remote Sharks is a boutique recruiting agency that connects US and global companies with elite remote professionals. A shortlist of three vetted candidates on your desk in 7 to 10 days, and you work directly with the founder from day one.
       </p>
       <div class="hero-cta" data-hero="4">
-        <a class="btn" href="#book" data-todo="calendly">Book a Call <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn" href="#contact" data-todo="calendly">Book a Call <span class="arrow" aria-hidden="true">&rarr;</span></a>
         <a class="textlink" href="https://wa.me/51937153488" target="_blank" rel="noopener">Or message me on WhatsApp</a>
       </div>
     </div>
@@ -859,11 +920,45 @@
     </div>
   </section>
 
+  <!-- MEET THE TEAM -->
+  <section class="team" id="team" aria-labelledby="team-heading">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="eyebrow" id="team-heading">04 &middot; Meet the Team</span>
+        <span class="rule" aria-hidden="true"></span>
+      </div>
+      <div class="roles-intro reveal">
+        <h2 class="display" style="font-size:clamp(2.2rem,5vw,3.8rem);max-width:11em;">You need sharks to <em>find sharks.</em></h2>
+        <p class="lede">A small, senior team behind every search. We source and screen across LATAM, and the founder interviews every finalist personally, so you never get handed to a junior.</p>
+      </div>
+      <div class="team-roster">
+        <article class="member reveal">
+          <div class="member-portrait"><img src="../assets/team-diana.jpg" alt="Diana Romero" onerror="this.remove()"><span>DR</span></div>
+          <h3 class="member-name">Diana Romero</h3>
+          <div class="member-role">Sourcing &amp; Screening</div>
+          <p class="member-bio">Sources and screens across LATAM, running the first pass of vetting so only the strongest candidates reach the founder round.</p>
+        </article>
+        <article class="member reveal" style="--d:0.1s">
+          <div class="member-portrait"><img src="../assets/team-fred.jpg" alt="Fred Varela" onerror="this.remove()"><span>FV</span></div>
+          <h3 class="member-name">Fred Varela</h3>
+          <div class="member-role">Client Manager (Founder)</div>
+          <p class="member-bio">Top 2% of recruiters on Upwork, Top Rated Plus at 100% job success. Owns the client relationship and leads every search from kickoff to hire.</p>
+        </article>
+        <article class="member reveal" style="--d:0.2s">
+          <div class="member-portrait"><img src="../assets/team-analucia.jpg" alt="Analuc&iacute;a D&aacute;vila" onerror="this.remove()"><span>AD</span></div>
+          <h3 class="member-name">Analuc&iacute;a D&aacute;vila</h3>
+          <div class="member-role">Sourcing &amp; Screening</div>
+          <p class="member-bio">Sources and coordinates each search, keeping candidates coached and the pipeline moving so shortlists land on time.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- FOUNDER NOTE -->
   <section class="founder" id="founder" aria-labelledby="founder-heading">
     <div class="section-inner">
       <div class="section-head reveal" style="margin-bottom:0;">
-        <span class="eyebrow" id="founder-heading">04 &middot; A Note From the Founder</span>
+        <span class="eyebrow" id="founder-heading">05 &middot; A Note From the Founder</span>
         <span class="rule" aria-hidden="true" style="background:rgba(240,238,226,0.2);"></span>
       </div>
       <p class="note reveal">Big agencies hand your search to a junior the moment the contract is signed. At Remote Sharks, the person you meet on the first call is the person who <em>runs your search,</em> interviews your candidates, and answers your messages.</p>
@@ -882,12 +977,11 @@
   <section class="final" id="contact" aria-labelledby="final-heading">
     <div class="section-inner">
       <h2 class="display reveal" id="final-heading">Ready to meet your next <em>great hire?</em></h2>
-      <p class="lede reveal" style="--d:0.08s">Tell me about the role. If it is a fit, we kick off the search and you meet three vetted finalists within 7 to 10 days.</p>
+      <p class="lede reveal" style="--d:0.08s">Tell me about the role. If it is a fit, we kick off the search and you meet three vetted finalists, fast.</p>
       <div class="hero-cta reveal" style="--d:0.16s">
-        <a class="btn" href="#book" data-todo="calendly">Book a Call <span class="arrow" aria-hidden="true">&rarr;</span></a>
-        <a class="textlink" href="https://wa.me/51937153488" target="_blank" rel="noopener">WhatsApp: +51 937 153 488</a>
+        <a class="btn" href="#contact" data-todo="calendly">Book a Call <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="textlink" href="https://wa.me/51937153488" target="_blank" rel="noopener">Message on WhatsApp</a>
       </div>
-      <p class="fineprint reveal" style="--d:0.24s">Prefer email? <a href="mailto:federico@remote-sharks.com">federico@remote-sharks.com</a></p>
     </div>
   </section>
 
@@ -933,6 +1027,27 @@
     }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
 
     items.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Scroll-spy: highlight the active section in the nav
+  (function () {
+    if (!("IntersectionObserver" in window)) return;
+    var ids = ["what-we-do", "process", "why-latam", "team"];
+    var linkFor = {};
+    ids.forEach(function (id) {
+      var a = document.querySelector('.nav-anchor[href="#' + id + '"]');
+      var sec = document.getElementById(id);
+      if (a && sec) linkFor[id] = a;
+    });
+    var visible = {};
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
+      var current = ids.filter(function (id) { return visible[id]; })[0];
+      ids.forEach(function (id) {
+        if (linkFor[id]) linkFor[id].classList.toggle("active", id === current);
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    ids.forEach(function (id) { var sec = document.getElementById(id); if (sec) spy.observe(sec); });
   })();
 </script>
 

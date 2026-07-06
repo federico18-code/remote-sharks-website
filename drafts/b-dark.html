@@ -116,6 +116,7 @@ body::after{
   transition:color .25s;
 }
 .nav-links a:not(.btn):hover{color:var(--aqua)}
+.nav-links a:not(.btn).active{color:var(--aqua)}
 .nav .btn{padding:.7rem 1.5rem;font-size:.74rem}
 @media(max-width:760px){.nav-links a:not(.btn){display:none}}
 
@@ -383,6 +384,33 @@ body::after{
 }
 .latam-note::before{content:"";width:2.4rem;height:1px;background:var(--aqua);flex:none}
 
+/* ---------- team ---------- */
+.team{
+  padding:clamp(5rem,10vw,8.5rem) 0;
+  background:linear-gradient(180deg,var(--abyss) 0%,var(--deep) 100%);
+  border-top:1px solid var(--line);
+}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:clamp(2.6rem,5vw,4rem)}
+@media(max-width:860px){.team-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}}
+.tm{
+  border:1px solid var(--line);background:rgba(20,30,62,.3);overflow:hidden;
+  padding:2.4rem 1.6rem 2.2rem;text-align:center;
+  transition:border-color .35s,transform .4s var(--ease-out);
+}
+.tm:hover{border-color:rgba(62,230,210,.4);transform:translateY(-6px)}
+.tm-photo{
+  position:relative;width:150px;height:150px;margin:0 auto;overflow:hidden;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;border:1px solid rgba(62,230,210,.28);
+}
+.tm-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(.18) contrast(1.02);transition:filter .4s}
+.tm:hover .tm-photo img{filter:none}
+.tm-photo span{font-weight:900;font-size:2.8rem;color:var(--aqua)}
+.tm-photo img+span{display:none}
+.tm-body{padding:1.5rem 0 0}
+.tm h3{font-weight:900;text-transform:uppercase;font-size:1.18rem;letter-spacing:.02em;line-height:1.1}
+.tm .role{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--aqua);margin-top:.6rem}
+.tm .bio{color:var(--cream-dim);font-size:.9rem;margin-top:.95rem}
+
 /* ============================================================
    FINAL CTA
    ============================================================ */
@@ -487,6 +515,7 @@ body::after{
     <a href="#roles">Roles</a>
     <a href="#process">Process</a>
     <a href="#latam">Why LATAM</a>
+    <a href="#team">Team</a>
     <a class="btn btn-primary" href="#book" data-todo="calendly">Book a Call</a>
   </nav>
 </header>
@@ -678,6 +707,43 @@ body::after{
   </div>
 </section>
 
+<!-- ================= TEAM ================= -->
+<section class="team" id="team">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Meet the Team</p>
+      <h2 class="display">You need sharks to<br><span class="accent">find sharks</span></h2>
+    </div>
+    <div class="team-grid">
+      <article class="tm reveal">
+        <div class="tm-photo"><img src="../assets/team-diana.jpg" alt="Diana Romero" onerror="this.remove()"><span>DR</span></div>
+        <div class="tm-body">
+          <h3>Diana Romero</h3>
+          <p class="role">Sourcing &amp; Screening</p>
+          <p class="bio">Sources and screens across LATAM, running the first pass of vetting so only the strongest candidates reach the founder round.</p>
+        </div>
+      </article>
+      <article class="tm reveal reveal-d1">
+        <div class="tm-photo"><img src="../assets/team-fred.jpg" alt="Fred Varela" onerror="this.remove()"><span>FV</span></div>
+        <div class="tm-body">
+          <h3>Fred Varela</h3>
+          <p class="role">Client Manager (Founder)</p>
+          <p class="bio">Top 2% of recruiters on Upwork, Top Rated Plus at 100% job success. Owns the client relationship and leads every search from kickoff to hire.</p>
+        </div>
+      </article>
+      <article class="tm reveal reveal-d2">
+        <div class="tm-photo"><img src="../assets/team-analucia.jpg" alt="Analuc&iacute;a D&aacute;vila" onerror="this.remove()"><span>AD</span></div>
+        <div class="tm-body">
+          <h3>Analuc&iacute;a D&aacute;vila</h3>
+          <p class="role">Sourcing &amp; Screening</p>
+          <p class="bio">Sources and coordinates each search, keeping candidates coached and the pipeline moving so shortlists land on time.</p>
+        </div>
+      </article>
+    </div>
+    <p class="latam-note reveal">A small, senior team. We recruit where we live.</p>
+  </div>
+</section>
+
 <!-- ================= FINAL CTA ================= -->
 <section class="finale" id="book">
   <div class="wrap">
@@ -694,10 +760,6 @@ body::after{
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
       </a>
       <a class="btn btn-ghost" href="https://wa.me/51937153488" target="_blank" rel="noopener">Chat on WhatsApp</a>
-    </div>
-    <div class="finale-contact reveal reveal-d3">
-      <a href="mailto:federico@remote-sharks.com">federico@remote-sharks.com</a>
-      <a href="tel:+51937153488">+51 937 153 488</a>
     </div>
   </div>
 </section>
@@ -829,6 +891,25 @@ body::after{
     if(!ticking){ requestAnimationFrame(updateGauge); ticking = true; }
   }, {passive:true});
   updateGauge();
+
+  /* ---------- scroll-spy: active nav section ---------- */
+  if("IntersectionObserver" in window){
+    var spyIds = ["roles","process","latam","team"];
+    var spyLink = {};
+    spyIds.forEach(function(id){
+      var a = document.querySelector('.nav-links a[href="#' + id + '"]');
+      if(a && document.getElementById(id)) spyLink[id] = a;
+    });
+    var spyVisible = {};
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ spyVisible[e.target.id] = e.isIntersecting; });
+      var current = spyIds.filter(function(id){ return spyVisible[id]; })[0];
+      spyIds.forEach(function(id){
+        if(spyLink[id]) spyLink[id].classList.toggle("active", id === current);
+      });
+    }, {rootMargin:"-45% 0px -50% 0px", threshold:0});
+    spyIds.forEach(function(id){ var s = document.getElementById(id); if(s) spy.observe(s); });
+  }
 })();
 </script>
 </body>
