@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Remote Sharks · Website Drafts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1F2C55;--cream:#F0EEE2;--line:rgba(31,44,85,.14)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Montserrat,system-ui,sans-serif;background:var(--cream);color:var(--navy);
+       line-height:1.5;padding:clamp(1.5rem,5vw,4rem)}
+  header{max-width:1040px;margin:0 auto 2.5rem;text-align:center}
+  header img{height:96px;width:auto;margin-bottom:1.2rem}
+  h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.02em}
+  header p{margin-top:.6rem;opacity:.7;font-size:1rem;max-width:34rem;margin-left:auto;margin-right:auto}
+  .grid{max-width:1040px;margin:0 auto;display:grid;gap:1.4rem;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.8rem;
+        display:flex;flex-direction:column;gap:.6rem;transition:transform .2s ease,box-shadow .2s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -20px rgba(31,44,85,.35)}
+  .tag{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.55}
+  .card h2{font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
+  .card p{font-size:.95rem;opacity:.78;flex:1}
+  .card a{margin-top:.8rem;display:inline-block;text-align:center;background:var(--navy);color:#fff;
+          text-decoration:none;font-weight:600;padding:.8rem 1.2rem;border-radius:10px;transition:opacity .2s}
+  .card a:hover{opacity:.88}
+  footer{max-width:1040px;margin:2.6rem auto 0;text-align:center;font-size:.85rem;opacity:.55}
+</style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo-navy-web.png" alt="Remote Sharks">
+    <h1>Website Drafts</h1>
+    <p>Three directions for the new remote-sharks.com. Open each one and tell me which lands.</p>
+  </header>
+  <main class="grid">
+    <article class="card">
+      <span class="tag">Draft A</span>
+      <h2>Editorial</h2>
+      <p>Light cream layout, large editorial serif with italics, boutique and quiet. Inspired by the zavly.com.br feel.</p>
+      <a href="drafts/a-editorial.html">Open Draft A</a>
+    </article>
+    <article class="card">
+      <span class="tag">Draft B</span>
+      <h2>Dark Predator</h2>
+      <p>Deep ocean dark theme, huge bold type, electric aqua accents, animated depth. Apex predator energy.</p>
+      <a href="index.html">Open Draft B</a>
+    </article>
+    <article class="card">
+      <span class="tag">Draft C</span>
+      <h2>Clean Agency</h2>
+      <p>White and navy, dual audience (hiring vs looking for work), clear process and FAQ. Conversion focused.</p>
+      <a href="drafts/c-clean.html">Open Draft C</a>
+    </article>
+  </main>
+  <footer>Remote Sharks · internal preview</footer>
+</body>
+</html>
